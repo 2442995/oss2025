@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    ifstream fin("C:\\Users\\JungSooMin\\Desktop\\scores.txt");
+    if (!fin) {
+        cerr << "Error opening scores.txt. Make sure the file exists and is accessible." << endl;
+        return 1;
+    }
+
+    string name;
+    double score;
+    double sum = 0, topScore = -100.0;
+    int count = 0;
+
+    while (fin >> name >> score) {
+        sum += score;
+        if (count == 0 || score > topScore) {
+            topScore = score;
+        }
+        count++;
+    }
+
+    fin.close();
+
+    if (count == 0) {
+        cerr << "No data available in scores.txt." << endl;
+        return 1;
+    }
+
+    double average = sum / count;
+
+    ofstream fout("result.txt");
+    if (!fout) {
+        cerr << "Error opening result.txt. Make sure you have write permissions." << endl;
+        return 1;
+    }
+
+    fout.precision(2);
+    fout << fixed;
+    fout << "Total: " << sum << endl;
+    fout << "Average: " << average << endl;
+    fout << "Top score: " << topScore << endl;
+
+    fout.close();
+
+    cout << "Results saved in result.txt." << endl;
+
+    return 0;
+}
