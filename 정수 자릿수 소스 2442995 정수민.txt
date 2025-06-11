@@ -1,0 +1,41 @@
+﻿#include <iostream>
+using namespace std;
+
+int main() {
+    long long num;
+    int pos;
+
+    cout << "정수 입력: ";
+    cin >> num;
+
+    cout << "자릿수 입력: ";
+    cin >> pos;
+
+    if (num <= 0 || pos <= 0) {
+        cout << "잘못된 입력입니다." << endl;
+        return 0;
+    }
+
+    int len = 0;
+    long long div = 1;
+
+    while (num / div > 0) {
+        len++;
+        div *= 10;
+    }
+
+    if (pos > len) {
+        cout << "자릿수 범위를 벗어났습니다." << endl;
+    }
+    else {
+        div = 1;
+        for (int i = 1; i < pos; i++) {
+            div *= 10;
+        }
+
+        int digit = (num / div) % 10;
+        cout << "오른쪽에서 시작해서 " << pos << "번째 자리에 있는 숫자는 " << digit << endl;
+    }
+
+    return 0;
+}
