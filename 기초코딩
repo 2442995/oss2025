@@ -1,0 +1,15 @@
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+int main() {
+    double a = 3.14;
+    a = 7.99; double b;
+    b = 7.99;
+
+    cout << a << ' ' << b << endl;
+    cout << &a << ' ' << &b << endl;
+    cout << typeid(a).name() << ' ' << typeid(b).name() << endl;
+
+    return 0;
+}
