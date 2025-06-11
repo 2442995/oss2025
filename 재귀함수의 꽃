@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+void printN(int n) { //  PrintN은 숫자 n부터 1까지 출력하고 다시 1부터 n까지 출력하는 함수
+    if (n == 0)
+        return; // n이 0이면 더 이상 출력하지 않음
+    cout << n << " "; // 현재 숫자 n을 화면에 출력
+    printN(n - 1); // n - 1 출력을 위해 함수 다시 호출
+    cout << n << " "; // 다시 n 출력
+}
+int main() {
+    int n; 
+    cin >> n;  // 숫자 입력받기
+
+    printN(n); // 입력받은 숫자부터 1까지 다음 다시 1부터 그 숫자까지 출력
+    return 0;
+}
