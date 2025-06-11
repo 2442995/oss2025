@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>  // 벡터 사용을 위해
+using namespace std;
+int main() {
+    int N;  // 명령어의 개수를 저장할 변수
+    cin >> N;  // 명령어 개수를 입력받음
+    vector<int> vec;  // 정수를 저장할 벡터 선언
+    for (int i = 0; i < N; i++) {  // N번 만큼 명령어 처리
+        string command;  // 각 명령어를 저장할 변수
+        cin >> command;  // 명령어를 입력받음
+        if (command == "push_back") { // push_back : 벡터에 숫자를 추가하는 명령어
+            int num;  // 벡터에 추가할 숫자를 저장할 변수
+            cin >> num;  // 숫자를 입력받음
+            vec.push_back(num);  // 벡터의 맨 뒤에 숫자 추가
+        }
+        else if (command == "pop_back") {   // pop_back : 벡터에서 마지막 값을 제거
+            if (!vec.empty()) {  // 벡터가 비어있지 않으면
+                vec.pop_back();  // 벡터에서 마지막 값 제거
+            }
+        }
+        else if (command == "size") { // size : 벡터의 크기를 출력하는 명령어
+            cout << vec.size() << endl;  // 벡터에 들어있는 요소의 개수를 출력
+        }
+        else if (command == "get") {  // get : 벡터에서 특정 인덱스의 값을 출력하는 명령어
+            int index;  // 인덱스 번호를 저장할 변수
+            cin >> index;  // 인덱스를 입력받음
+            if (index >= 1 && index <= vec.size()) {  // 1-based 인덱스가 벡터 크기 내에 있는지 체크
+                cout << vec[index - 1] << endl;  // 1-based 인덱스를 0-based로 변환하여 출력
+            }
+            else {
+                cout << "Index out of range" << endl;  // 인덱스가 벡터의 크기 범위를 벗어나면 오류 메시지 출력
+            }
+        }
+    }
+
+    return 0;  
+}
