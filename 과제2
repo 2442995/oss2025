@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+private:
+    wstring name; 
+public:
+    
+    Person(const wstring& initialName) {
+        name = initialName;
+    }
+
+    ~Person() {
+        wcout << L"name destroyed" << endl;
+    }
+
+    wstring getName() const {
+        return name;
+    }
+
+    void setName(const wstring& newName) {
+       
+        if (newName[0] != name[0]) {
+            wcout << L"Family name change not allowed." << endl;
+        }
+        else {
+            name = newName;
+            wcout << newName + L"(으)로 변경 완료" << endl;
+        }
+    }
+};
+
+int main() {
+    wcout.imbue(locale("korean"));
+
+    Person person(L"고길동");
+    wcout << L"원래 이름: " + person.getName() << endl;
+    person.setName(L"곡식");  // 첫 글자 다름 
+    person.setName(L"고구마");   // 첫 글자 같음 (성공)
+    person.setName(L"박길동");  // 첫 글자 다름
+    wcout << L"최종 이름: " + person.getName() << endl;
+
+    return 0;
+}
