@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+void PrintStar(int n) { // PrintStar은 숫자 n에 맞게 별을 출력하는 함수
+    if (n == 0) 
+        return;  // n이 0이면 더 이상 출력하지 않음
+    for (int i = 1; i <= n; i++)  // 1부터 n까지 반복
+        cout << "* ";  // 화면에 별 한 개 출력
+    cout << endl;  // 별을 한 줄 출력 후 다음 줄로 넘어감
+    PrintStar(n - 1); // 가운데 별 출력 함수 n이 1씩 줄어들면서 별을 출력 (재귀호출)
+    for (int i = 1; i <= n; i++)  // 1부터 n까지 반복
+        cout << "* ";  // 화면에 별 한 개 출력
+    cout << endl;  // 별을 한 줄 출력 후 다음 줄로 넘어감
+}
+int main() {
+    int n;  
+    cin >> n;  // 숫자 입력받기
+
+    PrintStar(n); // 별 출력 함수 실행
+
+    return 0; 
+}
