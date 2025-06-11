@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+void PrintHW(int n) { // PrintHW는 1부터 n까지 반복해서 "HelloWorld"를 출력하는 함수
+    if (n == 0) 
+        return; // n이 0이면 더 이상 출력하지 않음
+    PrintHW(n - 1);
+    cout << "HelloWorld" << endl;
+}
+int main() {
+    int n;
+    cin >> n;
+
+    PrintHW(n);
+    return 0;
+}
