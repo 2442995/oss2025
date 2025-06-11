@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <list>
+using namespace std;
+
+int n, m;
+string s;
+
+int main() {
+    cin >> n >> m;   // n과 m을 입력받음
+    cin >> s;         // 문자열 s를 입력받음
+    
+    list<char> l(s.begin(), s.end());  // 문자열을 리스트로 변환
+    list<char>::iterator cur = l.end();  // 커서를 리스트 끝으로 설정
+    
+    for (int i = 0; i < m; i++) {
+        char command;
+        cin >> command;  // 명령어 입력받음
+        
+        if (command == 'L') {
+            if (cur != l.begin())  // 커서를 왼쪽으로 한 칸 이동
+                cur--;
+        }
+        else if (command == 'R') {
+            if (cur != l.end())  // 커서를 오른쪽으로 한 칸 이동
+                cur++;
+        }
+        else if (command == 'D') {
+            if (cur != l.end())  // 커서 위치에서 문자 삭제
+                cur = l.erase(cur);
+        }
+        else if (command == 'P') {
+            char bread;
+            cin >> bread;  // 삽입할 문자 bread를 입력받음
+            l.insert(cur, bread);  // 커서 위치에 bread 삽입
+        }
+    }
+    
+    for (cur = l.begin(); cur != l.end(); cur++) {
+        cout << *cur;
+    }
+    cout << endl;  
+
+    return 0;
+}
